@@ -23,9 +23,8 @@ class Url
     raw_query = @internal.query
     result = {}
 
-    if raw_query.nil?
-      return result
-    end
+    return result if raw_query.nil?
+
     splitted = raw_query.split('&')
 
     splitted.each do |pair|
@@ -35,7 +34,7 @@ class Url
     result
   end
 
-  def query_param(key, default=nil)
+  def query_param(key, default = nil)
     params = query_params
     params.fetch(key, default)
   end
